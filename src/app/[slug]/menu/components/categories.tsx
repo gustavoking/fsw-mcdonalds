@@ -6,6 +6,7 @@ import { MenuCategory, Prisma, Restaurant } from "@prisma/client";
 import { ClockIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import Products from "./products";
 
 interface RestaurantCategoriesProps {
   restaurant: Prisma.RestaurantGetPayload<{
@@ -17,18 +18,20 @@ interface RestaurantCategoriesProps {
   }>;
 }
 
-// type MenuCategoriesWithProducts = Pris
+type MenuCategoriesWithProducts = Prisma.MenuCategoryGetPayload<{
+  include: {products: true}
+}>
 
 const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<MenuCategory>(
+  const [selectedCategory, setSelectedCategory] = useState<MenuCategoriesWithProducts>(
     restaurant.menuCategories[0],
   );
 
-  const handleCategoryClick = (category: MenuCategory) => {
+  const handleCategoryClick = (category: MenuCategoriesWithProducts) => {
     setSelectedCategory(category);
   };
 
-  const getCategoryButtonVariant = (category: MenuCategory) => {
+  const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
     return selectedCategory.id === category.id ? "default" : "secondary";
   };
 
@@ -72,6 +75,9 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
 
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
+
+      <h3 className="px-5 font-semibold pt-2">{selectedCategory.name}</h3>    
+      <Products products={selectedCategory.products}/>
     </div>
   );
 };
