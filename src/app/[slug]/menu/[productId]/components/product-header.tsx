@@ -17,13 +17,14 @@ const ProductHeader = ({product}: ProductsHeaderProps) => {
         router.back();
     }
 
-    return ( <div className="relative w-full h-[300px]">
-        <Button
-     variant="secondary"
-     size="icon"
-     className="absolute left-4 top-4 z-50 rounded-full"
-     onClick={handleBackClick}
-   >
+    return ( 
+    <div className="relative w-full min-h-[300px]">
+      <Button
+      variant="secondary"
+      size="icon"
+      className="absolute left-4 top-4 z-50 rounded-full"
+      onClick={handleBackClick}
+    >
      <ChevronLeftIcon />
    </Button>
    <Image
