@@ -3,7 +3,7 @@
 import { Product } from "@prisma/client";
 import { createContext, ReactNode, useState } from "react";
 
-interface CartProduct extends 
+export interface CartProduct extends 
     Pick<Product, 'id' | 'name' | 'price' | 'imageUrl'> {
     quantity: number;
 }
@@ -13,6 +13,7 @@ export interface ICartContext {
     products: CartProduct[];
     toggleCart: () => void;
     addProduct: (product: CartProduct) => void;
+    decreaseProductQuantity: (productId: string) => void;
 }
 
 export const CartContext = createContext<ICartContext>({ 
@@ -20,6 +21,7 @@ export const CartContext = createContext<ICartContext>({
     products: [],
     toggleCart: () => {},
     addProduct: () => {},
+    decreaseProductQuantity: () => {},
 })
 
 export const CartProvider = ({children}: {children: ReactNode}) => {
@@ -34,15 +36,50 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
     }
 
     const addProduct = (product: CartProduct) => {
-        setProducts(prev => ([...prev, product]))
-    }
+        const productIsAlreadyOnTheCart = products.some(
+          (prevProduct) => prevProduct.id === product.id,
+        );
+        if (!productIsAlreadyOnTheCart) {
+          return setProducts((prev) => [...prev, product]);
+        }
+        setProducts((prevProducts) => {
+          return prevProducts.map((prevProduct) => {
+            if (prevProduct.id === product.id) {
+              return {
+                ...prevProduct,
+                quantity: prevProduct.quantity + product.quantity,
+              };
+            }
+            return prevProduct;
+          });
+        });
+      };
+
+      const decreaseProductQuantity = (productId: string) => {  
+        setProducts(prevProducts => {
+          return prevProducts.map(prevProduct => {
+
+            if(prevProduct.id !== productId) {
+              return prevProduct
+            }
+         
+              if(prevProduct.quantity === 1){
+                return prevProduct
+              }  
+
+              return {...prevProduct, quantity: prevProduct.quantity - 1}
+               
+          })
+        })
+      }
 
     return (
         <CartContext.Provider value={{ 
             isOpen,
             products,
             toggleCart,
-            addProduct}}>
+            addProduct,
+            decreaseProductQuantity}}>
 
             {children}
         </CartContext.Provider>

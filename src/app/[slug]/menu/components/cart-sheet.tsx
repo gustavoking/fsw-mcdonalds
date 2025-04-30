@@ -1,13 +1,13 @@
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
     SheetHeader,
     SheetTitle,
     
   } from "@/components/ui/sheet"
 import { CartContext } from "../contexts/cart"
 import { useContext } from "react"
+import CartProductItem from "./cart-product-item";
 
   const CartSheet = () => {
 
@@ -17,15 +17,13 @@ import { useContext } from "react"
         <Sheet open={isOpen} onOpenChange={toggleCart}>
         <SheetContent>
           <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
-            <SheetDescription>
-              This action cannot be undone. This will permanently delete your account
-              and remove your data from our servers.
-            </SheetDescription>
+            <SheetTitle className="w-[80%]">Sacola</SheetTitle>
           </SheetHeader>
+          <div className="py-5">
           {products.map(product => (
-            <h1 key={product.id}>{product.name} -  {product.quantity}</h1>
+            <CartProductItem key={product.id} product={product}/>
           ))}
+          </div>
         </SheetContent>
       </Sheet>  
     );
