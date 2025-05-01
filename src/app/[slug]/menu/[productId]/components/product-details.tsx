@@ -103,7 +103,7 @@ const ProductDetails = ({product }: ProductDetailsProps) => {
 
       </div>
         <Button onClick={handleAddToCart} className="w-full rounded-full mt-6">
-            Adicionar à sacola
+            Adicionar ao carrinho 
         </Button>
     </div> 
         <CartSheet />
