@@ -31,8 +31,7 @@ export const CartContext = createContext<ICartContext>({
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
   removeProduct: () => {},
-  clearCart: () => {}
-  
+  clearCart: () => {},
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -112,7 +111,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         removeProduct,
         total,
         totalQuantity,
-        clearCart
+        clearCart,
       }}
     >
       {children}

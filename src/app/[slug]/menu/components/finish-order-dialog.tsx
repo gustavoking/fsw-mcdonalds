@@ -39,6 +39,8 @@ import { isValidCpf } from "../helpers/cpf";
 import { useRouter } from "next/navigation";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import { createStripeCheckout } from "../actions/create-stripe-checkout";
+import { loadStripe } from "@stripe/stripe-js";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -83,7 +85,6 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
       const consumptionMethod = searchParams.get(
         "consumptionMethod",
       ) as ConsumptionMethod;
-      console.log("products", products);
       if (products.length) {
         const order = await createOrder({
           consumptionMethod,
@@ -92,25 +93,25 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
           products,
           slug,
         });
-        // const { sessionId } = await createStripeCheckout({
-        //   products,
-        //   orderId: order.id,
-        //   slug,
-        //   consumptionMethod,
-        //   cpf: data.cpf,
-        // });
-        // if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) return;
-        // const stripe = await loadStripe(
-        //   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
-        // );
-        // stripe?.redirectToCheckout({
-        //   sessionId: sessionId,
-        // });
-        router.push(`/${slug}/orders?cpf=${data.cpf.replace(/\D/g, "")}`);
-        clearCart();
-      } else {
-        toast("Adicione itens no carrinho para finalizar o pedido");
+        const { sessionId } = await createStripeCheckout({
+          products,
+          orderId: order.id,
+        });
+
+        if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) return;
+
+        const stripe = await loadStripe(
+          process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
+        );
+        stripe?.redirectToCheckout({
+          sessionId: sessionId,
+        });
       }
+      // router.push(`/${slug}/orders?cpf=${data.cpf.replace(/\D/g, "")}`);
+      // clearCart();
+      // } else {
+      //   toast("Adicione itens no carrinho para finalizar o pedido");
+      // }
     } catch (error) {
       console.error(error);
     } finally {
