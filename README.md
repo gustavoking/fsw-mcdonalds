@@ -16,11 +16,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 <h1 align="center">
   <img width="200px" height="350px" src=".github/Initial.png" alt="Initial">
-  <img width="200px" height="350px"src=".github/Chooseitem.png" alt="Chooseitem">
+  <img width="200px" height="350px"src=".github/ChooseItem.png" alt="Chooseitem">
   <img width="200px" height="350px"src=".github/addToCart.png" alt="addToCart">
   <img width="200px" height="350px"src=".github/FinishCart.png" alt="FinishCart">
   <img width="200px" height="350px"src=".github/FinishOrder.png">
-  <img width="200px" height="350px" src=".github/ordersList.png" alt="ordersList">
+  <img width="200px" height="350px" src=".github/OrdersList.png" alt="ordersList">
   <img width="200px" height="350px" src=".github/seeMyOrders.png" alt="ordersList">
   <img width="200px" height="350px" src=".github/StripeScreen.png" alt="ordersList">
   </h1>
