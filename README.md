@@ -1,4 +1,90 @@
+<h1 align="center">
+  <img src=".github/Logo.png" alt="Logo">
+</h1>
+
+## Title
+
+✂️ FSW-MCDONALDS
+
+## Description
+
+🚀It is a web system made in mobile-first format through the Full Stack Week Bootcamp with Felipe Rocha, for scheduling appointments in barbershops
+
+##
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+<h1 align="center">
+  <img width="200px" height="350px" src=".github/Initial.png" alt="Initial">
+  <img width="200px" height="350px"src=".github/Chooseitem.png" alt="Chooseitem">
+  <img width="200px" height="350px"src=".github/addToCart.png" alt="addToCart">
+  <img width="200px" height="350px"src=".github/FinishCart.png" alt="FinishCart">
+  <img width="200px" height="350px"src=".github/FinishOrder.png">
+  <img width="200px" height="350px" src=".github/ordersList.png" alt="ordersList">
+  <img width="200px" height="350px" src=".github/seeMyOrders.png" alt="ordersList">
+  <img width="200px" height="350px" src=".github/StripeScreen.png" alt="ordersList">
+  </h1>
+
+# Table of Contents
+
+<p align="center">
+  <a href="#recycle-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+ 
+</p>
+
+## 🚀 Technologies
+
+**Language:**
+
+**🛠 Language / Main Framework**
+
+TypeScript
+– Superset of JavaScript with static typing
+
+Next.js
+– React framework for web applications
+
+**💾 Database / ORM**
+
+PostgreSQL
+– Relational database management system
+
+Prisma
+– ORM for databases
+
+**📋 Forms / Validation**
+
+React Hook Form
+– Form controller
+
+Zod
+– Data validation and parsing
+
+**🎨 Styling**
+
+Tailwind CSS
+– Utility-first CSS framework
+
+**📅 Dates**
+
+date-fns
+– Date utility library
+
+**💳 Payments / Subscriptions**
+
+Stripe – Subscription and billing management
+
+## 🔗 Features
+
+- Choose between dine-in or takeaway
+- Add items to the cart
+- Complete the order
+- Make payment with credit card via Stripe
+- View my list of orders
+- Check if orders are completed or pending
 
 ## Getting Started
 
