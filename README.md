@@ -8,7 +8,7 @@
 
 ## Description
 
-🚀It is a web system made in mobile-first format through the Full Stack Week Bootcamp with Felipe Rocha, for scheduling appointments in barbershops
+🚀 It's an ifood-style app for ordering snacks, created at the FSW bootcamp with Felipe Rocha.
 
 ##
 
